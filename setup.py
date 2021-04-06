@@ -3,7 +3,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setuptools.setup(
      name='easyadmin',  
-     version='0.01', # PYQLVERSION
+     version='BUILD_VERSION',
      packages=setuptools.find_packages(include=['easyadmin', 'easyadmin.pages', 'easyadmin.elements'], exclude=['build']),
      author="Joshua Jamison",
      author_email="joshjamison1@gmail.com",
