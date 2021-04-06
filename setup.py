@@ -7,7 +7,7 @@ setuptools.setup(
      packages=setuptools.find_packages(include=['easyadmin', 'easyadmin.pages', 'easyadmin.elements'], exclude=['build']),
      author="Joshua Jamison",
      author_email="joshjamison1@gmail.com",
-     description="Generate HTMl elements for an Admin type front-end",
+     description="Generate pre-formatted HTML elements for an Admin type front-end",
      long_description=long_description,
    long_description_content_type="text/markdown",
      url="https://github.com/codemation/easyadmin",
