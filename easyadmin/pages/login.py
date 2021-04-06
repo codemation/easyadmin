@@ -24,13 +24,13 @@ def get_login_page(
     <title>{title}</title>
 
     <!-- Custom fonts for this template-->
-    <link href="easyadmin_vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://codemation.github.io/easyadmin/easyadmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="easyadmin_css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="https://codemation.github.io/easyadmin/easyadmin/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -91,14 +91,14 @@ def get_login_page(
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="easyadmin_vendor/jquery/jquery.min.js"></script>
-    <script src="easyadmin_vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://codemation.github.io/easyadmin/easyadmin/vendor/jquery/jquery.min.js"></script>
+    <script src="https://codemation.github.io/easyadmin/easyadmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="easyadmin_vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="https://codemation.github.io/easyadmin/easyadmin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="easyadmin_js/sb-admin-2.min.js"></script>
+    <script src="https://codemation.github.io/easyadmin/easyadmin/js/sb-admin-2.min.js"></script>
 
 </body>
 
