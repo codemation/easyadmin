@@ -27,7 +27,7 @@ def get_line_item(
 <!-- Nav Item - {name} Collapse Menu -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse{name}" aria-expanded="true" aria-controls="collapse{name}">
-        <i class="fas fa-fw fa-{style}"></i>
+        <i class="fas fa-fw fa-{icon}"></i>
         <span>{name}</span>
     </a>
     <div id="collapse{name}" class="collapse" aria-labelledby="heading{name}" data-parent="#accordionSidebar">
