@@ -3,7 +3,7 @@ def get_line_item(
     href: str = '#',
     inside_header: str = 'inside_name name',
     items: list = None,
-    style: str = 'cog'
+    icon: str = 'cog'
 ):
     inside_items = []
     inside_items_html = []
@@ -76,7 +76,8 @@ def get_side_bar(
                     section_item['name'],
                     section_item['href'],
                     section_item['inside_header'] if 'inside_header' in section_item else None,
-                    section_item['items']
+                    section_item['items'],
+                    icon=section_item['icon']
                 )
             )
         # add divider between each section
