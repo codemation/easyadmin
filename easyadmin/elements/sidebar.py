@@ -43,7 +43,7 @@ def get_line_item(
 <!-- Nav Item - {name} -->
 <li class="nav-item">
     <a class="nav-link" href="{href}">
-        <i class="fas fa-fw fa-{style}"></i>
+        <i class="fas fa-fw fa-{icon}"></i>
         <span>{name}</span></a>
 </li>
 """
