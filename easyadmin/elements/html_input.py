@@ -5,7 +5,7 @@ def get_text_input(
 ):
     return f"""
 <div class="col-sm-{size}">
-    <input type="text" class="form-control name="{name}" form-control-user" id="exampleFirstName"
+    <input type="{input_type}" class="form-control name="{name}" form-control-user" id="exampleFirstName"
         placeholder="{name}">
 </div>
 """
