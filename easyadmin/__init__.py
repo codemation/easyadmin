@@ -1,5 +1,5 @@
 from easyadmin.pages import login, not_found, admin, admin_table
-from easyadmin.elements import buttons, modal, sidebar, table, forms
+from easyadmin.elements import buttons, modal, sidebar, table, forms, html_input
 
 class Admin:
     def __init__(self,
