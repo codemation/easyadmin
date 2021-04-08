@@ -1,9 +1,11 @@
 def get_table_page(
     name: str, 
-    data: list, 
+    data: list,
     sidebar: str, 
     current_user: str,
-    modals: str = ""
+    modals: str = "",
+    above: str = "",
+    below: str = "",
 ):
     navbar = sidebar
     table_headers = [th for th in data[0]]
@@ -120,7 +122,7 @@ def get_table_page(
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                    {above}
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -147,6 +149,8 @@ def get_table_page(
                             </div>
                         </div>
                     </div>
+
+                    {below}
 
                 </div>
                 <!-- /.container-fluid -->

@@ -1,5 +1,5 @@
 from easyadmin.pages import login, not_found, admin, admin_table
-from easyadmin.elements import buttons, modal, sidebar, table
+from easyadmin.elements import buttons, modal, sidebar, table, forms
 
 class Admin:
     def __init__(self,
@@ -35,12 +35,15 @@ class Admin:
                         f'button_{i}', 
                         modal='TEST_MODAL', 
                         color='danger',
-                        icon='trash'
+                        icon='trash',
+                        size='lg'
                     )
                 )
-            } for i in range(10)],
+            } for i in range(20)],
         current_user: str = 'DEFAULT_USER',
-        modals: str = modal.get_modal("TEST_MODAL")
+        modals: str = modal.get_modal("TEST_MODAL"),
+        above: str = forms.get_form(),
+        below: str = ""
     ):
         
         return admin_table.get_table_page(
@@ -49,6 +52,8 @@ class Admin:
             self.sidebar,
             current_user,
             modals,
+            above=above,
+            below=below
         )
     def login_page(self,
         title: str = 'Login Title Page',

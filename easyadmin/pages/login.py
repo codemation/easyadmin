@@ -51,7 +51,7 @@ def get_login_page(
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">{welcome_message}</h1>
                                     </div>
-                                    <form class="user" action="{login_action}" method="{login_method}" action="{login_action}">
+                                    <form class="user" action="{login_action}" method="{login_method}">
                                         <div class="form-group">
                                             <input type="{identity_type}" name="username" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"

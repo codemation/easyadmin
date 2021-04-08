@@ -77,7 +77,7 @@ def get_side_bar(
                     section_item['href'],
                     section_item['inside_header'] if 'inside_header' in section_item else None,
                     section_item['items'],
-                    icon=section_item['icon']
+                    icon=section_item['icon'] if 'icon' in section_item else 'cog'
                 )
             )
         # add divider between each section
