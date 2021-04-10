@@ -10,6 +10,7 @@ def get_text_input(
     <input type="{input_type}"{value} class="form-control" name="{name}" form-control-user" id="exampleFirstName"
         placeholder="{name}">
 </div>
+
 """
 
 def get_checkbox_item(
@@ -27,6 +28,7 @@ def get_checkbox_item(
         </label>
     </div>
 </div>
+<div col-2></div>
 """
 
 def get_checkbox(
