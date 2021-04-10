@@ -19,7 +19,7 @@ def get_checkbox_item(
 ):
     checked= ' checked="true"' if checked else ''
     return f"""
-<div class="col-sm-4 col-md-2">
+<div class="col-sm-4 col-md-4">
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" name="{checkbox_name}" value="{label}" id="{label}"{checked}>
         <label class="form-check-label" for="{label}">
