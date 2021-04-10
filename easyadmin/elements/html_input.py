@@ -38,9 +38,11 @@ def get_checkbox(
         [get_checkbox_item(name, label=choice[0], checked=choice[1]) for choice in choices]
     )
     return f"""
-<h4>{name}</h4>
-<div class="row">
 
+<div class="row">
+    <div class="col-12 text-center">
+        <h4>{name}</h4>
+    </div>
     {choices}
 </div>
 """
