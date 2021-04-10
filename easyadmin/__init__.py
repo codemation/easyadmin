@@ -1,5 +1,10 @@
 from easyadmin.pages import login, not_found, admin, admin_table
-from easyadmin.elements import buttons, modal, sidebar, table, forms, html_input
+from easyadmin.elements import (
+    buttons, modal, 
+    sidebar, table, 
+    forms, html_input,
+    card, row
+)
 
 class Admin:
     def __init__(self,
@@ -43,7 +48,23 @@ class Admin:
         current_user: str = 'DEFAULT_USER',
         modals: str = modal.get_modal("TEST_MODAL"),
         above: str = forms.get_form(),
-        below: str = ""
+        below: str = row.get_row(
+            card.get_card(
+                "default_card_name",
+                buttons.get_split_button(),
+                size=3
+            )+
+            card.get_card(
+                "default_card_name",
+                buttons.get_split_button(),
+                size=3
+            )+
+            card.get_card(
+                "default_card_name",
+                buttons.get_split_button(),
+                size=3
+            )
+        )
     ):
         
         return admin_table.get_table_page(
