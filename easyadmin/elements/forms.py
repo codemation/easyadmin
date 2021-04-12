@@ -58,8 +58,6 @@ def get_form(
                         var fData = new FormData(formGroup[0])
                         var formJson = {{}}
                         var fInput = formGroup.find(':input')
-                        var action = formGroup[0].attributes.action.value
-                        var method = formGroup[0].attributes.action.method
                         var session;
                         for (var i = 0; i < fInput.length; i++) {{
                             if (!(fInput[i].type === "submit")){{
@@ -83,7 +81,7 @@ def get_form(
                         }}
                         var request = new XMLHttpRequest();
 
-                        request.open(method, action);
+                        request.open("{method}", "{action}");
 
                         request.onreadystatechange = function(){{
                             if (request.readyState === 4){{
