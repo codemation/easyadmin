@@ -30,7 +30,7 @@ def get_form(
     submit_button = buttons.get_button(
         submit_name, 
         size='block', 
-        onclick=f"SendForm('{title_id}', '{submit_name}', null)"
+        onclick=f"SendForm{title_id}('{title_id}', '{submit_name}', null)"
     )
     return f"""
 
@@ -51,7 +51,7 @@ def get_form(
                         <hr>
                     </form>
                     <script>
-                    function SendForm(InputId, buttonName, divIdToUpdate){{
+                    function SendForm{title_id}(InputId, buttonName, divIdToUpdate){{
                         var formGroup = $('#'+InputId)
                         console.log('Input Id to check for inputs is: '+ InputId)
                         //var fData = new FormData(formGroup[0].id)
@@ -59,6 +59,7 @@ def get_form(
                         var formJson = {{}}
                         var fInput = formGroup.find(':input')
                         var action = formGroup[0].attributes.action.value
+                        var method = formGroup[0].attributes.action.method
                         var session;
                         for (var i = 0; i < fInput.length; i++) {{
                             if (!(fInput[i].type === "submit")){{
@@ -82,7 +83,7 @@ def get_form(
                         }}
                         var request = new XMLHttpRequest();
 
-                        request.open("{method}", action);
+                        request.open(method, action);
 
                         request.onreadystatechange = function(){{
                             if (request.readyState === 4){{
