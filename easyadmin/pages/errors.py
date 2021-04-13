@@ -204,7 +204,6 @@ def get_formidden_page(
                     <!-- Forbidden Error Text -->
                     <div class="text-center">
                         <div class="error mx-auto" data-text="Forbidden">Forbidden</div>
-                        <p class="lead text-gray-800 mb-5">Forbidden</p>
                         <p class="text-gray-500 mb-0">You dont have permission to view this</p>
                         <a href="/login">&larr; Back to Login</a>
                     </div>
