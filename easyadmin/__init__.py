@@ -1,4 +1,9 @@
-from easyadmin.pages import login, not_found, admin, admin_table
+from easyadmin.pages import (
+    login, 
+    errors, 
+    admin, 
+    admin_table
+)
 from easyadmin.elements import (
     buttons, modal, 
     sidebar, table, 
@@ -91,8 +96,14 @@ class Admin:
             welcome_message
         )
     def not_found_page(self):
-        return pages.not_found.get_404_page(
+        return errors.get_404_page(
             'Page Not Found',
             self.sidebar,
             'DEFAULT_USER'
+        )
+    def forbidden_page(self):
+        return errors.get_formidden_page(
+            'Forbidden',
+            self.sidebar,
+            ''
         )
