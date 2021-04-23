@@ -89,12 +89,11 @@ def get_form(
                                     console.log("received the response - " + request);
                                 }} 
                                 else {{
-                                    alert("Form Submitted")
                                     if (divIdToUpdate === 'body'){{
                                         $(divIdToUpdate)[0].innerHTML = request.response;
                                     }}else{{
                                         console.log("request resp: "+request);
-                                            $('#' +divIdToUpdate)[0].outerHTML = request.response;
+                                        alert(request.response);
                                     }}
                                 }}
                             }} else {{
