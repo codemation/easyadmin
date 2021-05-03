@@ -93,7 +93,7 @@ def get_form(
                                         $(divIdToUpdate)[0].innerHTML = request.response;
                                     }}else{{
                                         console.log("request resp: "+request);
-                                        alert(request.response);
+                                        prompt("{title}", request.response);
                                     }}
                                 }}
                             }} else {{
