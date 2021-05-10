@@ -29,6 +29,19 @@ class Admin:
             title={'name': title, 'href': title_link},
             sections=side_bar_sections
         )
+    def admin_page(self,
+        name: str = 'DEFAULT ADMIN_PAGE NAME',
+        body: str,
+        current_user: str,
+        modals: str = ""
+    ):
+        return admin.get_admin_page(
+            name=name,
+            sidebar=self.sidebar,
+            body=body,
+            current_user=current_user,
+            modals=modals
+        )
 
     def table_page(self,
         name: str = 'DEFAULT TABLE_NAME',
