@@ -31,8 +31,8 @@ class Admin:
         )
     def admin_page(self,
         name: str = 'DEFAULT ADMIN_PAGE NAME',
-        body: str,
-        current_user: str,
+        body: str ='',
+        current_user: str ='DEFAULT_USER',
         modals: str = ""
     ):
         return admin.get_admin_page(
