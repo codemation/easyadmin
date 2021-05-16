@@ -5,8 +5,11 @@ def get_line_item(
     href: str = '#',
     inside_header: str = 'inside_name name',
     items: list = None,
-    icon: str = 'cog'
+    icon: str = 'cog',
+    onclick: str = None,
 ):
+    onclick = f""" onclick="{onclick}" """ if onclick else ''
+    inside_item = f'<a class="collapse-item" href="{inside_href}" {inside_onclick}>{inside_name}</a>'
     inside_items = []
     inside_items_html = []
     for item in items:
@@ -45,7 +48,7 @@ def get_line_item(
         line_item = f"""
 <!-- Nav Item - {name} -->
 <li class="nav-item">
-    <a class="nav-link" href="{href}">
+    <a class="nav-link" href="{href}" {onclick}>
         <i class="fas fa-fw fa-{icon}"></i>
         <span>{name}</span></a>
 </li>
