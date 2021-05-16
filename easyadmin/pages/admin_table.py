@@ -106,7 +106,12 @@ def get_table_page(
 
     <!-- Custom styles for this page -->
     <link href="https://codemation.github.io/easyadmin/easyadmin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        window.addEventListener('load', (event) => {{
+            loadChart()
+        }});
+    </script>
 </head>
 
 <body id="page-top">
@@ -176,7 +181,7 @@ def get_table_page(
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" id="page-body">
 
                     <!-- Page Heading -->
                     {above}
@@ -254,6 +259,8 @@ def get_table_page(
 
     <!-- Page level custom scripts -->
     <script src="https://codemation.github.io/easyadmin/easyadmin/js/demo/datatables-demo.js"></script>
+
+    
 
 </body>
 

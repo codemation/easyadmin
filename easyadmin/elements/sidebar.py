@@ -1,3 +1,5 @@
+from . import scripts
+
 def get_line_item(
     name: str = 'line_item name',
     href: str = '#',
@@ -11,7 +13,8 @@ def get_line_item(
         if 'href' in item:
             inside_name = item['name']
             inside_href = item['href']
-            inside_item = f'<a class="collapse-item" href="{inside_href}">{inside_name}</a>'
+            inside_onclick = f""" onclick="{item['onclick']}" """ if 'onclick' in item else ''
+            inside_item = f'<a class="collapse-item" href="{inside_href}" {inside_onclick}>{inside_name}</a>'
         inside_items.append(
             inside_item
         )
@@ -54,12 +57,19 @@ def get_side_bar(
     title: dict,
     sections: dict
 ):
+    script = ''
+    brand_onclick = ''
+
     divider = f"""
 <!-- Divider -->
 <hr class="sidebar-divider my-0">"""
+    brand_href = f"""href="#" """ if not 'brand_href' in title else f"""href="{title['brand_href']}" """
+    if 'brand_onclick' in title:
+        brand_onclick = f"""onclick="{title['brand_onclick']}" """
+        script = scripts.get_onclick_script()
     title_item = f"""
     <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="{title['href']}">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" {brand_href}{brand_onclick}>
     <div class="sidebar-brand-text mx-3">{title['name']}</div>
 </a>"""
 
@@ -86,7 +96,7 @@ def get_side_bar(
     sections_html = ''.join(section_items)
     side_bar = f"""
 <!-- Sidebar -->
-
+{script}
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     {title_item}
     {sections_html}

@@ -1,3 +1,5 @@
+from easyadmin.elements import scripts
+
 def get_admin_page(
     name: str, 
     sidebar: str,
@@ -6,6 +8,7 @@ def get_admin_page(
     modals: str = ""
 ):
     navbar = sidebar
+    submit_and_transform = scripts.get_onclick_form_submit_script(transform=True)
 
     return f"""
 <!DOCTYPE html>
@@ -32,11 +35,11 @@ def get_admin_page(
 
     <!-- Custom styles for this page -->
     <link href="https://codemation.github.io/easyadmin/easyadmin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+    
 </head>
 
 <body id="page-top">
-
+    {submit_and_transform}
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -93,7 +96,7 @@ def get_admin_page(
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" id="page-body">
                     {body}
                 </div>
                 <!-- /.container-fluid -->
@@ -140,6 +143,12 @@ def get_admin_page(
     <!-- Page level custom scripts -->
     <script src="https://codemation.github.io/easyadmin/easyadmin/js/demo/datatables-demo.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        window.addEventListener('load', (event) => {{
+            loadChart()
+        }});
+    </script>
 </body>
 
 </html>

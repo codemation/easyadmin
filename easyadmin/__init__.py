@@ -2,13 +2,14 @@ from easyadmin.pages import (
     login, 
     errors, 
     admin, 
-    admin_table
+    admin_table,
+    register
 )
 from easyadmin.elements import (
     buttons, modal, 
     sidebar, table, 
     forms, html_input,
-    card, row
+    card, row, scripts
 )
 
 class Admin:
@@ -22,11 +23,12 @@ class Admin:
                         'name':  'home',
                         'href': '/',
                         'items': []
-                    }]
+                    }
+                ]
             }]
     ):
-        self.sidebar = elements.sidebar.get_side_bar(
-            title={'name': title, 'href': title_link},
+        self.sidebar = sidebar.get_side_bar(
+            title={'name': title, 'brand_onclick': f"OnClickUpdate('/DEFAULT_ACTION', 'page-body', loadChart)"},
             sections=side_bar_sections
         )
     def admin_page(self,
@@ -42,6 +44,8 @@ class Admin:
             current_user=current_user,
             modals=modals
         )
+    def register_page(self):
+        return register.get_register_user_page()
 
     def table_page(self,
         name: str = 'DEFAULT TABLE_NAME',
@@ -65,7 +69,7 @@ class Admin:
             } for i in range(20)],
         current_user: str = 'DEFAULT_USER',
         modals: str = modal.get_modal("TEST_MODAL"),
-        above: str = forms.get_form(),
+        above: str = forms.get_form(transform_id="page-body"),
         below: str = row.get_row(
             card.get_card(
                 "default_card_name",
@@ -82,7 +86,9 @@ class Admin:
                 buttons.get_split_button(),
                 size=3
             )
-        )
+        ) +
+        scripts.get_chart()
+
     ):
         
         return admin_table.get_table_page(
