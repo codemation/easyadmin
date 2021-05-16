@@ -26,14 +26,17 @@ def get_form(
     submit_name: str = 'Default Submit Name',
     action: str = "/DEFAULT_ACTION",
     method: str = "POST",
-    transform_id = None
+    transform_id = None,
+    run_after: str = None,
 ):
     title_id = ''.join(title.split(' '))
     rows = ''.join([get_form_row(row) for row in rows])
+    transform_id = f"'{transform_id}'" if transform_id else 'null'
+    run_after = f'{run_after}' if run_after else 'null'
     submit_button = buttons.get_button(
         submit_name, 
         size='block', 
-        onclick=f"OnClickSendFormAndTransform('{title_id}', '{method}', '{action}', '{transform_id}', loadChart)"
+        onclick=f"OnClickSendFormAndTransform('{title_id}', '{method}', '{action}', {transform_id}, {run_after})"
         #targetFormId, submitMethod, submitPath, transformId)
     )
     submit_script = '' #scripts.get_onclick_form_submit_script(transform=True)

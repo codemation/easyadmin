@@ -69,7 +69,7 @@ class Admin:
             } for i in range(20)],
         current_user: str = 'DEFAULT_USER',
         modals: str = modal.get_modal("TEST_MODAL"),
-        above: str = forms.get_form(transform_id="page-body"),
+        above: str = forms.get_form(transform_id="page-body", run_after='loadChart'),
         below: str = row.get_row(
             card.get_card(
                 "default_card_name",
