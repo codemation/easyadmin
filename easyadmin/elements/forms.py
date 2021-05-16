@@ -33,10 +33,11 @@ def get_form(
     rows = ''.join([get_form_row(row) for row in rows])
     transform_id = f"'{transform_id}'" if transform_id else 'null'
     run_after = f'{run_after}' if run_after else 'null'
+    and_transform = '' if not transform_id else 'AndTransform'
     submit_button = buttons.get_button(
         submit_name, 
         size='block', 
-        onclick=f"OnClickSendFormAndTransform('{title_id}', '{method}', '{action}', {transform_id}, {run_after})"
+        onclick=f"OnClickSendForm{and_transform}('{title_id}', '{method}', '{action}', {transform_id}, {run_after})"
         #targetFormId, submitMethod, submitPath, transformId)
     )
     submit_script = '' #scripts.get_onclick_form_submit_script(transform=True)
