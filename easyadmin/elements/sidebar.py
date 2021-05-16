@@ -9,7 +9,6 @@ def get_line_item(
     onclick: str = None,
 ):
     onclick = f""" onclick="{onclick}" """ if onclick else ''
-    inside_item = f'<a class="collapse-item" href="{inside_href}" {inside_onclick}>{inside_name}</a>'
     inside_items = []
     inside_items_html = []
     for item in items:
@@ -90,7 +89,8 @@ def get_side_bar(
                     section_item['href'],
                     section_item['inside_header'] if 'inside_header' in section_item else None,
                     section_item['items'],
-                    icon=section_item['icon'] if 'icon' in section_item else 'cog'
+                    icon=section_item['icon'] if 'icon' in section_item else 'cog',
+                    onclick=section_item.get('onclick')
                 )
             )
         # add divider between each section
