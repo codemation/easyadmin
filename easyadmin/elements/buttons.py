@@ -54,3 +54,4 @@ $(document).on("click", "#{name}", function() {{
 }});
 </script>
         """
+    return button
