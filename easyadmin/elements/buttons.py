@@ -1,5 +1,6 @@
 def get_split_button(
     name: str = "DEFAULT_BUTTON_NAME",
+    button_id = '',
     href: str = None,
     color: str = 'primary',
     icon: str = 'plus',
@@ -9,7 +10,7 @@ def get_split_button(
 ):
     size = f' btn-{size}' if size else ''
     href = f' href="{href}"' if href else ''
-    button_id = ''.join(name.split(' '))
+    button_id = ''.join(name.split(' ')) + button_id
     if onclick:
         html_onclick = f' onclick="{onclick}"'
     else:
@@ -28,24 +29,26 @@ def get_split_button(
     <span class="text">{name}</span>
 </a>
 """
-    if onclick and modal:
-        button = f"""{button}
-<script>
-$(document).on("click", "#{button_id}", function() {{
-    {onclick}()
-}});
-</script>
-"""
+    return button
+#     if onclick and modal:
+#         button = f"""{button}
+# <script>
+# $(document).on("click", "#{button_id}", function() {{
+#     {onclick}()
+# }});
+# </script>
+# """
     return button
 def get_button(
     name: str = "DEFAULT_BUTTON_NAME",
+    button_id = '',
     href: str = None,
     color: str = 'primary',
     size: str = None,
     modal: str = None,
     onclick: str = None
 ):
-    button_id = ''.join(name.split(' '))
+    button_id = ''.join(name.split(' ')) + button_id
     href = f' href="{href}"' if href else ''
     size = f' btn-{size}' if size else ''
     if onclick:
@@ -59,12 +62,13 @@ def get_button(
     button = f"""
 <a id="{button_id}" class="btn btn-{color}{size}"{href}{modal}{html_onclick}>{name}</a>
 """
-    if onclick and modal:
-        button = f"""{button}
-<script>
-$(document).on("click", "#{button_id}", function() {{
-    {onclick}()
-}});
-</script>
-"""
     return button
+#     if onclick and modal:
+#         button = f"""{button}
+# <script>
+# document.on("click", "#{button_id}", function() {{
+#     {onclick}() 
+# }});
+# </script>
+# """
+#     return button
