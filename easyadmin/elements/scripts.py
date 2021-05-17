@@ -1,3 +1,17 @@
+def get_onload_scripts(scripts: list):
+    onload_scripts = """
+<script>
+    window.addEventListener('load', (event) => {"""
+    for script in scripts:
+        onload_scripts = f"""{onload_scripts}
+    {script}
+"""
+    onload_scripts = f"""{onload_scripts}
+    }});
+</script>
+"""
+    return onload_scripts
+
 def get_onclick_script():
     return"""
 <script>
@@ -132,17 +146,19 @@ function OnClickSendForm{and_transform}(targetFormId, submitMethod, submitPath, 
 
 
 def get_chart(
+    name: str = 'DefaultChartName',
     label: str = 'default label',
     data: dict = {'March': 20, 'April': 30, 'May': 25, 'June': 35}
 ):
     labels = ", ".join([f"'{k}'" for k in list(data.keys())])
     data = ', '.join([str(v) for v in list(data.values())])
+    print(f"get_chart name: {name}")
     return f"""
-<canvas id="myChart" width="400" height="400"></canvas>
+<canvas id="{name}" width="400" height="400"></canvas>
 <script>
 
-function loadChart(){{
-    var ctx = document.getElementById('myChart').getContext('2d');
+function loadChart{name}(){{
+    var ctx = document.getElementById('{name}').getContext('2d');
     var myChart = new Chart(ctx, {{
         type: 'line',
         data: {{

@@ -31,6 +31,7 @@ class Admin:
             title={'name': title, 'brand_onclick': f"OnClickUpdate('/DEFAULT_ACTION', 'page-body', loadChart)"},
             sections=side_bar_sections
         )
+        self.on_load_scripts = []
     def admin_page(self,
         name: str = 'DEFAULT ADMIN_PAGE NAME',
         body: str ='',
@@ -69,7 +70,7 @@ class Admin:
             } for i in range(20)],
         current_user: str = 'DEFAULT_USER',
         modals: str = modal.get_modal("TEST_MODAL"),
-        above: str = forms.get_form(transform_id="page-body", run_after='loadChart'),
+        above: str = forms.get_form(transform_id="page-body", run_after='loadChartDefaultChartName'),
         below: str = row.get_row(
             card.get_card(
                 "default_card_name",
@@ -88,7 +89,6 @@ class Admin:
             )
         ) +
         scripts.get_chart()
-
     ):
         
         return admin_table.get_table_page(
@@ -98,7 +98,9 @@ class Admin:
             current_user,
             modals,
             above=above,
-            below=below
+            below=below + scripts.get_onload_scripts(
+                self.on_load_scripts
+            )
         )
     def login_page(self,
         title: str = 'Login Title Page',

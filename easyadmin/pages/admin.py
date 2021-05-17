@@ -144,11 +144,6 @@ def get_admin_page(
     <script src="https://codemation.github.io/easyadmin/easyadmin/js/demo/datatables-demo.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        window.addEventListener('load', (event) => {{
-            loadChart()
-        }});
-    </script>
 </body>
 
 </html>
