@@ -36,11 +36,21 @@ def get_button(
     href = f' href="{href}"' if href else ''
     size = f' btn-{size}' if size else ''
     if onclick:
-        onclick = f' onclick="{onclick}"'
+        html_onclick = f' onclick="{onclick}"'
+    else:
+        html_onclick = ''
     if modal:
         modal = f' data-toggle="modal" data-target="#{modal}"'
     else:
         modal = ""
-    return f"""
-<a class="btn btn-{color}{size}"{href}{modal}{onclick}>{name}</a>
+    button = f"""
+<a id="{name}" class="btn btn-{color}{size}"{href}{modal}{html_onclick}>{name}</a>
 """
+    if onclick and modal:
+        button = f"""{button}
+<script>
+$(document).on("click", "#{name}", function() {{
+    {onclick}()
+}});
+</script>
+        """
