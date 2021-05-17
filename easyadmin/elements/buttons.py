@@ -53,5 +53,5 @@ $(document).on("click", "#{name}", function() {{
     {onclick}()
 }});
 </script>
-        """
+"""
     return button
