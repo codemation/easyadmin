@@ -1,7 +1,7 @@
 from .sidebar import test
 
-def get_table(name: str, data: list):
-    navbar = test()
+
+def get_table_body(name: str, data: list):
     table_headers = [th for th in data[0]]
     table_headers_html = ''.join(
         [f'<th>{th}</th>\n' for th in table_headers]
@@ -18,6 +18,29 @@ def get_table(name: str, data: list):
 """)
     table_rows_html = ''.join(table_rows_html)
 
+    return f"""
+<div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                {table_headers_html}
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                {table_headers_html}
+            </tr>
+        </tfoot>
+        <tbody>
+            {table_rows_html}
+        </tbody>
+    </table>
+</div>
+"""
+
+def get_table(name: str, data: list):
+    navbar = test()
+    table_body = get_table_body(name, data)
     return f"""
 <!DOCTYPE html>
 <html lang="en">
@@ -279,23 +302,7 @@ def get_table(name: str, data: list):
                             <h6 class="m-0 font-weight-bold text-primary">{name}</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            {table_headers_html}
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            {table_headers_html}
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        {table_rows_html}
-                                    </tbody>
-                                </table>
-                            </div>
+                            {table_body}
                         </div>
                     </div>
 
