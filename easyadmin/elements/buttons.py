@@ -31,7 +31,7 @@ def get_split_button(
     if onclick and modal:
         button = f"""{button}
 <script>
-$(document).on("click", "#{name}", function() {{
+$(document).on("click", "#{button_id}", function() {{
     {onclick}()
 }});
 </script>
@@ -62,7 +62,7 @@ def get_button(
     if onclick and modal:
         button = f"""{button}
 <script>
-$(document).on("click", "#{name}", function() {{
+$(document).on("click", "#{button_id}", function() {{
     {onclick}()
 }});
 </script>
