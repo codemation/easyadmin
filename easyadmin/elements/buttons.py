@@ -9,6 +9,7 @@ def get_split_button(
 ):
     size = f' btn-{size}' if size else ''
     href = f' href="{href}"' if href else ''
+    button_id = ''.join(name.split(' '))
     if onclick:
         html_onclick = f' onclick="{onclick}"'
     else:
@@ -20,7 +21,7 @@ def get_split_button(
         modal = ""
 
     button = f"""
-<a{href} class="btn btn-{color} btn-icon-split{size}"{modal}{html_onclick}>
+<a id="{button_id}" {href} class="btn btn-{color} btn-icon-split{size}"{modal}{html_onclick}>
     <span class="icon text-white-50">
         <i class="fas fa-{icon}"></i>
     </span>
@@ -44,6 +45,7 @@ def get_button(
     modal: str = None,
     onclick: str = None
 ):
+    button_id = ''.join(name.split(' '))
     href = f' href="{href}"' if href else ''
     size = f' btn-{size}' if size else ''
     if onclick:
@@ -55,7 +57,7 @@ def get_button(
     else:
         modal = ""
     button = f"""
-<a id="{name}" class="btn btn-{color}{size}"{href}{modal}{html_onclick}>{name}</a>
+<a id="{button_id}" class="btn btn-{color}{size}"{href}{modal}{html_onclick}>{name}</a>
 """
     if onclick and modal:
         button = f"""{button}
