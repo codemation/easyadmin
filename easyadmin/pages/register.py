@@ -1,15 +1,13 @@
+from easyadmin.elements import forms
+
 def get_register_user_page(
     title: str = 'Register user',
-    identity_type: str = 'username', # 'email' also possible
-    register_action: str = '/login',
-    register_method: str = 'post',
+    form: str = forms.get_form(
+        title='Register User',
+        transform_id='RegisterUser'
+    ),
     welcome_message: str = 'Register Account'
 ):
-
-    placeholder = 'Username...'
-    if identity_type == 'email':
-        placeholder = f'Enter Email Address...'
-
     return f"""
 <!DOCTYPE html>
 <html lang="en">
@@ -52,35 +50,10 @@ def get_register_user_page(
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">{welcome_message}</h1>
                                     </div>
-                                    <form class="user" action="register" method="post">
-                                        <div class="form-group">
-                                            <input type="{identity_type}" name="username" class="form-control form-control-user"
-                                                id="exampleInputUsername" aria-describedby="usernameHelp"
-                                                placeholder="{placeholder}">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" name="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Email Address">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="name" name="fullname" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="nameHelp"
-                                                placeholder="Full Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" name="repeat-password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
-                                        </div>
-                                        <button class="btn btn-primary btn-user btn-block" type="submit">
-                                            Register
-                                        </button
-                                    </form>
+                                    {form}
                                     <hr>
                                     <div class="text-center">
+                                        <a class="small" href="/login">Existing User - Login /</a> 
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div>
                                 </div>

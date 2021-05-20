@@ -45,8 +45,6 @@ class Admin:
             current_user=current_user,
             modals=modals
         )
-    def register_page(self):
-        return register.get_register_user_page()
 
     def table_page(self,
         name: str = 'DEFAULT TABLE_NAME',

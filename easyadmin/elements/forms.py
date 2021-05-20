@@ -40,7 +40,7 @@ def get_form(
         onclick=f"OnClickSendForm{and_transform}('{title_id}', '{method}', '{action}', {transform_id}, {run_after})"
         #targetFormId, submitMethod, submitPath, transformId)
     )
-    submit_script = '' #scripts.get_onclick_form_submit_script(transform=True)
+    submit_script = scripts.get_onclick_form_submit_script(transform=True)
     form_top = f"""
 <div class="card o-hidden border-0 shadow-lg my-5">
     <div class="card-body p-0">
