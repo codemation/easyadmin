@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   package:
-    name: Package Easy Jobs PyPI
+    name: Package EasyAdmin for PyPI
     runs-on: ubuntu-latest
     steps:
       # Downloads a copy of the code in your repository before running CI tests
@@ -21,16 +21,16 @@ jobs:
 
       - name: Package & Test PyPI Installation
         run: |
-          export PYQL_NEXT_VER=$(pip -qqq download easyjobs && ls easyjobs*.whl | sed 's/-/" "/g' | awk '{print "(" $2 ")"}' |  python nextbuild.py)
+          export PYQL_NEXT_VER=$(pip -qqq download easyadmin && ls easyadmin*.whl | sed 's/-/" "/g' | awk '{print "(" $2 ")"}' |  python nextbuild.py)
           sed -i 's/PYQLVERSION/'$PYQL_NEXT_VER'/g' setup.py
           python setup.py bdist_wheel
-          export PYQL_PACKAGE=$(pwd)/dist/easyjobs-$PYQL_NEXT_VER-py3-none-any.whl
+          export PYQL_PACKAGE=$(pwd)/dist/easyadmin-$PYQL_NEXT_VER-py3-none-any.whl
           pip install $(echo -n $PYQL_PACKAGE)
 
       - name: Upload to PyPi
         env: # Or as an environment variable
           PYPI: ${{ secrets.PYPI }}
         run: |
-          export PYQL_NEXT_VER=$(pip -qqq download easyjobs && ls easyjobs*.whl | sed 's/-/" "/g' | awk '{print "(" $2 ")"}' |  python nextbuild.py) 
-          export PYQL_PACKAGE=$(pwd)/dist/easyjobs-$PYQL_NEXT_VER-py3-none-any.whl
-          python -m twine upload $(pwd)/dist/easyjobs-$PYQL_NEXT_VER-py3-none-any.whl -u codemation -p $PYPI
+          export PYQL_NEXT_VER=$(pip -qqq download easyadmin && ls easyadmin*.whl | sed 's/-/" "/g' | awk '{print "(" $2 ")"}' |  python nextbuild.py) 
+          export PYQL_PACKAGE=$(pwd)/dist/easyadmin-$PYQL_NEXT_VER-py3-none-any.whl
+          python -m twine upload $(pwd)/dist/easyadmin-$PYQL_NEXT_VER-py3-none-any.whl -u codemation -p $PYPI
