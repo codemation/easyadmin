@@ -20,7 +20,7 @@ def get_form(
         html_input.get_text_input('username', value='test') + html_input.get_text_input('pasword', input_type='password'),
         html_input.get_text_input('email', size=12),
         html_input.get_text_input('address'),
-        html_input.get_checkbox('choices', [(f'choice{i}', False) for i in range(20)]),
+        html_input.get_checkbox('choices', [(f'choice{i}', False) for i in range(20)])+
         html_input.get_checkbox('options', [(f'options{i}', True) for i in range(20)])
     ],
     submit_name: str = 'Default Submit Name',

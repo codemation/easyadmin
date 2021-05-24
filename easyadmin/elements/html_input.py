@@ -1,3 +1,5 @@
+from . import card
+
 def get_text_input(
     name: str = 'input text name',
     input_type: str = 'text', # 'text', 'password', 'email',
@@ -20,7 +22,7 @@ def get_checkbox_item(
 ):
     checked= ' checked="true"' if checked else ''
     return f"""
-<div class="col-sm-4 col-md-4">
+<div class="col-sm-12 col-md-8 col-lg-6">
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" name="{checkbox_name}" value="{label}" id="{label}"{checked}>
         <label class="form-check-label" for="{label}">
@@ -28,23 +30,24 @@ def get_checkbox_item(
         </label>
     </div>
 </div>
-<div col-2></div>
 """
 
 def get_checkbox(
     name: str,
-    choices: set
+    choices: set,
+    size: int = 4
 ):
     choices = set(choices)
     choices = ''.join(
         [get_checkbox_item(name, label=choice[0], checked=choice[1]) for choice in choices]
     )
-    return f"""
-
+    check_box =  f"""
 <div class="row">
-    <div class="col-12 text-center">
-        <h4>{name}</h4>
-    </div>
     {choices}
 </div>
 """
+    return card.get_card(
+        name,
+        body=check_box,
+        size=size
+    )
