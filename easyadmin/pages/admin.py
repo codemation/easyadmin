@@ -5,7 +5,8 @@ def get_admin_page(
     sidebar: str,
     body: str,
     current_user: str,
-    modals: str = ""
+    modals: str = "",
+    root_path = '',
 ):
     navbar = sidebar
     submit_and_transform = scripts.get_onclick_form_submit_script(transform=True)
@@ -79,7 +80,7 @@ def get_admin_page(
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/user/{current_user}">
+                                <a class="dropdown-item" href="{root_path}/user/{current_user}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -144,6 +145,29 @@ def get_admin_page(
     <script src="https://codemation.github.io/easyadmin/easyadmin/js/demo/datatables-demo.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    ###
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+
+
+
+
 </body>
 
 </html>
