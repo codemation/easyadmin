@@ -11,7 +11,7 @@ function onSignIn(googleUser) {{
     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
     console.log('Token: '+ id_token)
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/swap_token');
+    xhr.open('POST', '/auth/token/oauth/google');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.setRequestHeader('X-Google-OAuth2-Type', 'client');
