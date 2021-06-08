@@ -17,6 +17,7 @@ function onSignIn(googleUser) {{
     xhr.setRequestHeader('X-Google-OAuth2-Type', 'client');
     xhr.onload = function() {{
         console.log('Signed in as: ' + xhr.responseText);
+        window.location.href = '/admin';
     }};
     xhr.send(id_token);
 
