@@ -1,10 +1,48 @@
+def get_google_oauth_login():
+    return f"""
+<div class="g-signin2" data-onsuccess="onSignIn">
+<script>
+function onSignIn(googleUser) {{
+    var profile = googleUser.getBasicProfile();
+    var id_token = googleUser.getAuthResponse().id_token
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    console.log('Token: '+ id_token)
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/swap_token');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    xhr.setRequestHeader('X-Google-OAuth2-Type', 'client');
+    xhr.onload = function() {{
+        console.log('Signed in as: ' + xhr.responseText);
+    }};
+    xhr.send(id_token);
+
+}}
+
+</script>
+"""
+
 def get_login_page(
     title: str = 'Login Title Page',
     identity_type: str = 'username', # 'email' also possible
     login_action: str = '/login',
     login_method: str = 'post',
-    welcome_message: str = 'Welcome Back!'
+    welcome_message: str = 'Welcome Back!',
+    google: str = '',
 ):
+    meta_extras = ''
+    oauth_login = ''
+    if google:
+        meta_extras = f"""
+<meta name="google-signin-client_id" content="{google}">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+"""
+        google_login = get_google_oauth_login()
+        oauth_login = f"{oauth_login}{google_login}"
+        
     placeholder = 'Username...'
     if identity_type == 'email':
         placeholder = f'Enter Email Address...'
@@ -31,7 +69,7 @@ def get_login_page(
 
     <!-- Custom styles for this template-->
     <link href="https://codemation.github.io/easyadmin/easyadmin/css/sb-admin-2.min.css" rel="stylesheet">
-
+    {meta_extras}
 </head>
 
 <body class="bg-gradient-primary">
@@ -70,6 +108,7 @@ def get_login_page(
                                         <a class="small" href="/register">New User - Register / </a>
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div>
+                                    {oauth_login}
                                 </div>
                             </div>
                         </div>

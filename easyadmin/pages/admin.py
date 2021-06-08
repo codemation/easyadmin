@@ -36,7 +36,6 @@ def get_admin_page(
 
     <!-- Custom styles for this page -->
     <link href="https://codemation.github.io/easyadmin/easyadmin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    
 </head>
 
 <body id="page-top">
@@ -95,6 +94,8 @@ def get_admin_page(
 
                 </nav>
                 <!-- End of Topbar -->
+                
+                </div>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid" id="page-body">
@@ -145,6 +146,7 @@ def get_admin_page(
     <script src="https://codemation.github.io/easyadmin/easyadmin/js/demo/datatables-demo.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 
 </body>
 

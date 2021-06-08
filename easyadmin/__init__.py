@@ -105,14 +105,16 @@ class Admin:
         identity_type: str = 'username', # 'email' also possible
         login_action: str = '/login',
         login_method: str = 'post',
-        welcome_message: str = 'Welcome Back!'
+        welcome_message: str = 'Welcome Back!',
+        google: str = ''
     ):
         return login.get_login_page(
             title,
             identity_type,
             login_action,
             login_method,
-            welcome_message
+            welcome_message,
+            google=google
         )
     def not_found_page(self):
         return errors.get_404_page(
