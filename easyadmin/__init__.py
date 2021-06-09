@@ -88,7 +88,8 @@ class Admin:
                 size=3
             )
         ) +
-        scripts.get_chart()
+        scripts.get_chart(),
+        google='',
     ):
         
         return admin_table.get_table_page(
