@@ -101,7 +101,8 @@ class Admin:
             above=above,
             below=below + scripts.get_onload_scripts(
                 self.on_load_scripts
-            )
+            ),
+            google=google
         )
     def login_page(self,
         title: str = 'Login Title Page',
