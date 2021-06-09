@@ -49,7 +49,8 @@ def get_table_page(
     modals: str = "",
     above: str = "",
     below: str = "",
-    root_path: str = '/'
+    root_path: str = '/',
+    google: str = '',
 ):
     navbar = sidebar
     table_headers = [th for th in data[0]]
@@ -80,5 +81,6 @@ def get_table_page(
         current_user=current_user,
         modals=modals,
         root_path=root_path,
+        google=google
     )
     return admin_page
