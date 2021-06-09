@@ -136,6 +136,9 @@ def get_admin_page(
     <script src="https://codemation.github.io/easyadmin/easyadmin/js/demo/datatables-demo.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google OAuth scripts -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     
 
 </body>
