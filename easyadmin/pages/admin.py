@@ -9,11 +9,14 @@ def get_admin_page(
     root_path = '',
     google = ''
 ):
+    extra_scripts = ''
     extra_meta = ''
     if google:
         extra_meta = f"""
 <meta name="google-signin-client_id" content="{google}">
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+"""
+        extra_scripts = """
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 """
     navbar = sidebar
     submit_and_transform = scripts.get_onclick_form_submit_script(transform=True)
@@ -144,6 +147,8 @@ def get_admin_page(
     <script src="https://codemation.github.io/easyadmin/easyadmin/js/demo/datatables-demo.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    {extra_scripts}
 
 </body>
 
