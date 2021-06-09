@@ -7,7 +7,14 @@ def get_admin_page(
     current_user: str,
     modals: str = "",
     root_path = '',
+    google = ''
 ):
+    extra_meta = ''
+    if google:
+        extra_meta = f"""
+<meta name="google-signin-client_id" content="{google}">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+"""
     navbar = sidebar
     submit_and_transform = scripts.get_onclick_form_submit_script(transform=True)
 
@@ -22,6 +29,7 @@ def get_admin_page(
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    {extra_meta}
 
     <title>{name}</title>
 
@@ -136,10 +144,6 @@ def get_admin_page(
     <script src="https://codemation.github.io/easyadmin/easyadmin/js/demo/datatables-demo.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Google OAuth scripts -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    
 
 </body>
 

@@ -36,14 +36,16 @@ class Admin:
         name: str = 'DEFAULT ADMIN_PAGE NAME',
         body: str ='',
         current_user: str ='DEFAULT_USER',
-        modals: str = ""
+        modals: str = "",
+        google: str = '',
     ):
         return admin.get_admin_page(
             name=name,
             sidebar=self.sidebar,
             body=body,
             current_user=current_user,
-            modals=modals
+            modals=modals,
+            google=google
         )
 
     def table_page(self,
