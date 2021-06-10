@@ -110,7 +110,8 @@ class Admin:
         login_action: str = '/login',
         login_method: str = 'post',
         welcome_message: str = 'Welcome Back!',
-        google: str = ''
+        google: str = '',
+        google_redirect_url: '',
     ):
         return login.get_login_page(
             title,
@@ -118,7 +119,8 @@ class Admin:
             login_action,
             login_method,
             welcome_message,
-            google=google
+            google=google,
+            google_redirect_url=google_redirect_url
         )
     def not_found_page(self):
         return errors.get_404_page(
