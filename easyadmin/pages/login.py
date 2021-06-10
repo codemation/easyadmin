@@ -1,4 +1,4 @@
-def get_google_oauth_login():
+def get_google_oauth_login(redirect_url='admin'):
     return f"""
 <div class="g-signin2" data-onsuccess="onSignIn">
 <script>
@@ -17,7 +17,7 @@ function onSignIn(googleUser) {{
     xhr.setRequestHeader('X-Google-OAuth2-Type', 'client');
     xhr.onload = function() {{
         console.log('Signed in as: ' + xhr.responseText);
-        window.location.href = '/admin';
+        window.location.href = '{redirect_url}';
     }};
     xhr.send(id_token);
 
@@ -33,6 +33,7 @@ def get_login_page(
     login_method: str = 'post',
     welcome_message: str = 'Welcome Back!',
     google: str = '',
+    google_redirect_url = ''
 ):
     meta_extras = ''
     oauth_login = ''
@@ -41,7 +42,7 @@ def get_login_page(
 <meta name="google-signin-client_id" content="{google}">
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 """
-        google_login = get_google_oauth_login()
+        google_login = get_google_oauth_login(google_redirect_url)
         oauth_login = f"{oauth_login}{google_login}"
         
     placeholder = 'Username...'
