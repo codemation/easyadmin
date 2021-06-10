@@ -111,7 +111,7 @@ class Admin:
         login_method: str = 'post',
         welcome_message: str = 'Welcome Back!',
         google: str = '',
-        google_redirect_url: '',
+        google_redirect_url: str =  '',
     ):
         return login.get_login_page(
             title,
