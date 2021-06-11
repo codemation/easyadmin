@@ -5,6 +5,7 @@ def get_admin_page(
     sidebar: str,
     body: str,
     current_user: str,
+    topbar_extra = "",
     modals: str = "",
     root_path = '',
     google = ''
@@ -100,12 +101,11 @@ def get_admin_page(
                                 </a>
                             </div>
                         </li>
-
                     </ul>
 
                 </nav>
                 <!-- End of Topbar -->
-                
+                {topbar_extra}
                 </div>
 
                 <!-- Begin Page Content -->

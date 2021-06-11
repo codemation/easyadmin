@@ -36,6 +36,7 @@ class Admin:
         name: str = 'DEFAULT ADMIN_PAGE NAME',
         body: str ='',
         current_user: str ='DEFAULT_USER',
+        topbar_extra = "",
         modals: str = "",
         google: str = '',
     ):
@@ -44,6 +45,7 @@ class Admin:
             sidebar=self.sidebar,
             body=body,
             current_user=current_user,
+            topbar_extra=topbar_extra,
             modals=modals,
             google=google
         )
