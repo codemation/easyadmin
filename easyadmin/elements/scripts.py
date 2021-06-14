@@ -100,9 +100,9 @@ function OnClickSendForm{and_transform}(targetFormId, submitMethod, submitPath, 
     }}
     var request = new XMLHttpRequest();
 
-    request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
-
     request.open(submitMethod, submitPath);
+
+    request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 
     request.onreadystatechange = function(){{
         if (request.readyState === 4){{
