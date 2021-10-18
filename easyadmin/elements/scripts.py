@@ -200,6 +200,18 @@ function loadChart{name}(){{
 </script>
 """
 
+def get_signout_script(google=False):
+    if google:
+        return get_google_signout_script()
+    return default_signout_script()
+
+def default_signout_script():
+    return """
+<script>
+    function signOut() {
+        window.location.href = '/logout'
+    };"""
+
 def get_google_signout_script():
     return """
 <script>
