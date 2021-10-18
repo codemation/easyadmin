@@ -209,8 +209,9 @@ def default_signout_script():
     return """
 <script>
     function signOut() {
-        window.location.href = '/logout'
-    };"""
+        window.location.href = '/logout';
+    };
+</script>"""
 
 def get_google_signout_script():
     return """
