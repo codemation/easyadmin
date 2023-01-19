@@ -1,15 +1,7 @@
-def get_google_oauth_login(redirect_url='admin'):
+def get_google_oauth_login(google, redirect_url='admin'):
     return f"""
-<div class="g-signin2" data-onsuccess="onSignIn">
 <script>
-function onSignIn(googleUser) {{
-    var profile = googleUser.getBasicProfile();
-    var id_token = googleUser.getAuthResponse().id_token
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    console.log('Token: '+ id_token)
+function handleCredentialResponse(response) {{
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/auth/token/oauth/google');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -19,11 +11,21 @@ function onSignIn(googleUser) {{
         console.log('Signed in as: ' + xhr.responseText);
         window.location.href = '{redirect_url}';
     }};
-    xhr.send(id_token);
-
+    xhr.send(response.credential);
 }}
-
+window.onload = function () {{
+    google.accounts.id.initialize({{
+    client_id: "{google}",
+    callback: handleCredentialResponse
+    }});
+    google.accounts.id.renderButton(
+    document.getElementById("buttonDiv"),
+    {{ theme: "outline", size: "large" }}  // customization attributes
+    );
+    google.accounts.id.prompt(); // also display the One Tap dialog
+}}
 </script>
+<div id="buttonDiv"></div> 
 """
 
 def get_login_page(
@@ -40,9 +42,9 @@ def get_login_page(
     if google:
         meta_extras = f"""
 <meta name="google-signin-client_id" content="{google}">
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 """
-        google_login = get_google_oauth_login(google_redirect_url)
+        google_login = get_google_oauth_login(google, google_redirect_url)
         oauth_login = f"{oauth_login}{google_login}"
         
     placeholder = 'Username...'
